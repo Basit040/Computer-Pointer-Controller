@@ -61,6 +61,7 @@ python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py
 ## Structure of directory
 ![](./images/pic2.jpg)
 
+
 ![](./images/pic3.jpg)
 
 ## DEMO
@@ -123,6 +124,7 @@ python src/main.py -f pretrainedmodels/face-detection-adas-binary-0001/FP32-INT1
 
 ## RESULTS
 •	Lower precision model give lower accuracy.
+
 •	When using lower inference models the inference becomes faster.
 
 
