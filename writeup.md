@@ -13,6 +13,8 @@ We will be use the InferenceEngine API from Intel's OpenVino ToolKit to build th
 * The right eye image.
 
 We will have to coordinate the flow of data from the input, and then amongst the different models and finally to the mouse controller. The flow of data will look like this:
+
+
 ![Flow Of Data](./images/pic1.jpg)
 
 ## Project Set Up and Installation
