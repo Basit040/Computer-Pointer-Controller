@@ -31,54 +31,55 @@ Requirements based on [OpenVino toolkit](https://docs.openvinotoolkit.org/latest
 
 ### Step 2: (Dependencies)
 Then we install the prerequisites from requirements.txt using the following command
-'''
+```
 pip install -r requirements.txt
-'''
+```
 ### Step 3: (Initialize the OpenVINO environment)
-'''
+```
 cd C:\Program Files (x86)\IntelSWTools\openvino\bin\
-'''
-'''
+```
+```
 setupvars.bat
-'''
+```
 ### Step 4: (Download Intel Pre Trained Models)
 - Download [Face Detection Model](https://docs.openvinotoolkit.org/latest/_models_intel_face_detection_adas_binary_0001_description_face_detection_adas_binary_0001.html)
-'''
+```
 python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "face-detection-adas-binary-0001"
-'''
+```
 - Download [Facial Landmarks Detection Model](https://docs.openvinotoolkit.org/latest/_models_intel_landmarks_regression_retail_0009_description_landmarks_regression_retail_0009.html)
-'''
+```
 python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "landmarks-regression-retail-0009"
-'''
+```
 - Download [Head Pose Estimation Model](https://docs.openvinotoolkit.org/latest/_models_intel_head_pose_estimation_adas_0001_description_head_pose_estimation_adas_0001.html)
-'''
+```
 python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "head-pose-estimation-adas-0001"
-'''
+```
 - Download [Gaze Estimation Model](https://docs.openvinotoolkit.org/latest/_models_intel_gaze_estimation_adas_0002_description_gaze_estimation_adas_0002.html)
-'''
+```
 python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py --name "gaze-estimation-adas-0002"
-'''
+```
 ## Structure of directory
 ![](./images/pic2.jpg)
+
 ![](./images/pic3.jpg)
 
 ## DEMO
 In order to run the application, run following commands:
 - Initialize the OpenVINO environment
-'''
+```
 cd C:\Program Files (x86)\IntelSWTools\openvino\bin\
-'''
-'''
+```
+```
 setupvars.bat
-'''
+```
 - Go to the application directory
-'''
+```
 cd <Project-Path>
-'''
+```
 - Run main.py
-'''
+```
 python src/main.py -f pretrainedmodels/face-detection-adas-binary-0001/FP32-INT1/face-detection-adas-binary-0001.xml -fl pretrainedmodels/landmarks-regression-retail-0009/FP32/landmarks-regression-retail-0009.xml -hp pretrainedmodels/head-pose-estimation-adas-0001/FP32/head-pose-estimation-adas-0001.xml -g pretrainedmodels/gaze-estimation-adas-0002/FP32/gaze-estimation-adas-0002.xml -i bin/demo.mp4 ("video file" or "CAM") -d CPU (“Target Device”)
-'''
+```
 
 ## Command line arguments
 The following Command line arguments is fed in the main.py file:
@@ -93,26 +94,29 @@ The following Command line arguments is fed in the main.py file:
 ## BENCHMARKS
 I tested all the different performance for different model precisions
 - FP16 precision
-'''
+```
 python src/main.py -f pretrainedmodels/face-detection-adas-binary-0001/FP32-INT1/face-detection-adas-binary-0001.xml -fl pretrainedmodels/landmarks-regression-retail-0009/FP16/landmarks-regression-retail-0009.xml -hp pretrainedmodels/head-pose-estimation-adas-0001/FP16/head-pose-estimation-adas-0001.xml -g pretrainedmodels/gaze-estimation-adas-0002/FP16/gaze-estimation-adas-0002.xml -i bin/demo.mp4 -d CPU
-'''
+```
+
 * Total loading time: 1.13 seconds
 * Total Inference time : 11.9 seconds
 * FPS : 1.68 frames/second
 
 
 - FP32 precision
-'''
+```
 python src/main.py -f pretrainedmodels/face-detection-adas-binary-0001/FP32-INT1/face-detection-adas-binary-0001.xml -fl pretrainedmodels/landmarks-regression-retail-0009/FP32/landmarks-regression-retail-0009.xml -hp pretrainedmodels/head-pose-estimation-adas-0001/FP32/head-pose-estimation-adas-0001.xml -g pretrainedmodels/gaze-estimation-adas-0002/FP32/gaze-estimation-adas-0002.xml -i bin/demo.mp4 -d CPU
-'''
+```
+
 * Total models loading time: 2.98 seconds
 * Total Inference time : 33.6 seconds
 * FPS : 1.76 frames/second
 
 - INT8
-'''
+```
 python src/main.py -f pretrainedmodels/face-detection-adas-binary-0001/FP32-INT1/face-detection-adas-binary-0001.xml -fl pretrainedmodels/landmarks-regression-retail-0009/FP32-INT8/landmarks-regression-retail-0009.xml -hp pretrainedmodels/head-pose-estimation-adas-0001/FP32-INT8/head-pose-estimation-adas-0001.xml -g pretrainedmodels/gaze-estimation-adas-0002/FP32-INT8/gaze-estimation-adas-0002.xml -i bin/demo.mp4 -d CPU
-'''
+```
+
 * Total models loading time: 3.28 seconds
 * Total Inference time : 32.3 seconds
 * FPS : 1.83 frames/second
