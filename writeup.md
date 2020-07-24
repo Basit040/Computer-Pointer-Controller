@@ -66,7 +66,7 @@ python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py
 
 ![](./images/pic3.jpg)
 
-###src folder contains all the source files:-
+## src folder contains all the source files:-
 
 * face_detection.py
 Contains preprocession of video frame, perform infernce on it and detect the face, postprocess the outputs.
@@ -80,10 +80,10 @@ Take the detected face as input, preprocessed it, perform inference on it and de
 * gaze_estimation.py
 Take the left eye, rigt eye, head pose angles as inputs, preprocessed it, perform inference and predict the gaze vector, postprocess the outputs.
 
-*input_feeder.py
+* input_feeder.py
 Contains InputFeeder class which initialize VideoCapture as per the user argument and return the frames one by one.
 
-*mouse_controller.py
+* mouse_controller.py
 Contains MouseController class which take x, y coordinates value, speed, precisions and according these values it moves the mouse pointer by using pyautogui library.
 main.py
 
