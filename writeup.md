@@ -66,6 +66,30 @@ python /opt/intel/openvino/deployment_tools/tools/model_downloader/downloader.py
 
 ![](./images/pic3.jpg)
 
+###src folder contains all the source files:-
+
+* face_detection.py
+Contains preprocession of video frame, perform infernce on it and detect the face, postprocess the outputs.
+
+* facial_landmarks_detection.py
+Take the deteted face as input, preprocessed it, perform inference on it and detect the eye landmarks, postprocess the outputs.
+
+* head_pose_estimation.py
+Take the detected face as input, preprocessed it, perform inference on it and detect the head postion by predicting yaw - roll - pitch angles, postprocess the outputs.
+
+* gaze_estimation.py
+Take the left eye, rigt eye, head pose angles as inputs, preprocessed it, perform inference and predict the gaze vector, postprocess the outputs.
+
+*input_feeder.py
+Contains InputFeeder class which initialize VideoCapture as per the user argument and return the frames one by one.
+
+*mouse_controller.py
+Contains MouseController class which take x, y coordinates value, speed, precisions and according these values it moves the mouse pointer by using pyautogui library.
+main.py
+
+Users need to run main.py file for running the app.
+media folder contains demo video which user can use for testing the app.
+
 ## DEMO
 In order to run the application, run following commands:
 - Initialize the OpenVINO environment
@@ -96,7 +120,7 @@ The following Command line arguments is fed in the main.py file:
 
 ## BENCHMARKS
 I tested all the different performance for different model precisions
-- FP16 precision
+1) FP16 precision
 ```
 python src/main.py -f pretrainedmodels/face-detection-adas-binary-0001/FP32-INT1/face-detection-adas-binary-0001.xml -fl pretrainedmodels/landmarks-regression-retail-0009/FP16/landmarks-regression-retail-0009.xml -hp pretrainedmodels/head-pose-estimation-adas-0001/FP16/head-pose-estimation-adas-0001.xml -g pretrainedmodels/gaze-estimation-adas-0002/FP16/gaze-estimation-adas-0002.xml -i bin/demo.mp4 -d CPU
 ```
@@ -106,7 +130,7 @@ python src/main.py -f pretrainedmodels/face-detection-adas-binary-0001/FP32-INT1
 * FPS : 1.68 frames/second
 
 
-- FP32 precision
+2) FP32 precision
 ```
 python src/main.py -f pretrainedmodels/face-detection-adas-binary-0001/FP32-INT1/face-detection-adas-binary-0001.xml -fl pretrainedmodels/landmarks-regression-retail-0009/FP32/landmarks-regression-retail-0009.xml -hp pretrainedmodels/head-pose-estimation-adas-0001/FP32/head-pose-estimation-adas-0001.xml -g pretrainedmodels/gaze-estimation-adas-0002/FP32/gaze-estimation-adas-0002.xml -i bin/demo.mp4 -d CPU
 ```
@@ -115,7 +139,7 @@ python src/main.py -f pretrainedmodels/face-detection-adas-binary-0001/FP32-INT1
 * Total Inference time : 33.6 seconds
 * FPS : 1.76 frames/second
 
-- INT8
+3) INT8
 ```
 python src/main.py -f pretrainedmodels/face-detection-adas-binary-0001/FP32-INT1/face-detection-adas-binary-0001.xml -fl pretrainedmodels/landmarks-regression-retail-0009/FP32-INT8/landmarks-regression-retail-0009.xml -hp pretrainedmodels/head-pose-estimation-adas-0001/FP32-INT8/head-pose-estimation-adas-0001.xml -g pretrainedmodels/gaze-estimation-adas-0002/FP32-INT8/gaze-estimation-adas-0002.xml -i bin/demo.mp4 -d CPU
 ```
